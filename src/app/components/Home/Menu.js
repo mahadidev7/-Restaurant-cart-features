@@ -1,25 +1,53 @@
+/* eslint-disable react/style-prop-object */
 import React from "react";
-import { THEME } from "../../utils/Theme";
 import { AppShortTitle, AppTitle } from "../share";
-import threeIMG from "../../assets/home/3.png";
+import { MenuDummyData } from "../../data";
+import MenuTitle from "./menuwrapper/MenuTitle";
 import MenuWrapper from "./menuwrapper/MenuWrapper";
+import MenuItem from "./menuwrapper/MenuItem";
 
 function Menu() {
-
+  const { burgers, drink, sandwiches, sides } = MenuDummyData;
   return (
-    <div className={`bg-[${THEME.menuBackGroundColor}] relative`} id="Menu">
-      <img src={threeIMG} alt="3.png" className="absolute top-20 right-0 -z-20" />
-      <div className="MH_container">
+    <div className="bg-menuBackGroundColor" id="Menu">
+      <div className="MH_container z-10 relative">
         <div className="py-20">
-          <AppShortTitle text="Our Menu" />
-          <AppTitle firstText="Browse Our" secondText="Menu" />
-          <p>
-          Objectively pontificate quality models before intuitive information. Dramatically
-          <br />
-          recapitalize multifunctional materials.
-          </p>
+          <div className="flex flex-col gap-2">
+            <AppShortTitle text="Our Menu" />
+            <AppTitle firstText="Browse Our" secondText="Menu" />
+            <p className="text-base text-center md:text-left">
+              Objectively pontificate quality models before intuitive
+              information. Dramatically
+              <br />
+              recapitalize multifunctional materials.
+            </p>
+          </div>
           <div className="my-12">
-            <MenuWrapper />
+            <div className="grid gap-1 md:grid-cols-6 grid-cols-2">
+              {/* All Burgers left site */}
+              <div className="lg:col-span-5 col-span-full p-1 border border-dashed self-start">
+                <MenuTitle text={burgers.name} />
+                <div className="grid gap-1 md:grid-cols-2 grid-cols-1 mt-7">
+                  {/* Regular Burgers */}
+                  <MenuWrapper data={burgers.regular} />
+                  {/* House Special Burgers */}
+                  <MenuWrapper data={burgers.houseSpecial} />
+                </div>
+              </div>
+              {/* drink right site */}
+              <div className="lg:col-span-1 col-span-full">
+                <MenuWrapper data={drink} style="lg:!grid-cols-1" />
+              </div>
+            </div>
+          </div>
+
+          {/* Sandwiches && Sides  */}
+          <div className="grid gap-1 grid-cols-2">
+            {/* Sandwiches  */}
+            <MenuWrapper data={sandwiches} />
+            {/* Sides  */}
+
+            <MenuWrapper data={sides} />
           </div>
         </div>
       </div>

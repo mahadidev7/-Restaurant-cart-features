@@ -1,9 +1,10 @@
 import React from 'react'
-import { Hero, Menu } from '../components'
+import { Header, Hero, Menu } from '../components'
 
 function HomePage() {
   return (
     <>
+        <Header />
         <Hero />
         <Menu />
     </>

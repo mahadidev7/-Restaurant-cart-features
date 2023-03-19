@@ -10,11 +10,15 @@ html {
 
 body{
   overflow-x: hidden;
+  background-color: #FAF7F2;
 }
 
-h1,h2,h3,h4,h5,h6, .MH_appTitle{
+h1,h2,h3,h4,h5,h6, .MH_appTitle, .price{
   font-family: 'Bitter', serif !important;
   font-weight: 700;
+}
+p{
+  color: #333;
 }
 
 .MH_shortTitle{
@@ -26,11 +30,11 @@ h1,h2,h3,h4,h5,h6, .MH_appTitle{
   font-weight: bold;
 }
 .MH_container{
-  width: 1280px;
+  /* width: 1280px; */
+  width: 95%;
   max-width: 100%;
   padding: 5px;
   margin: auto;
-  display: block;
 }
 /* default style end */
 

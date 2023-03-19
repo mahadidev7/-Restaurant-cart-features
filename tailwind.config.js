@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      primary: '#eb0029',
+      secondary: '#ff9d2d',
+      menuBackGroundColor: '#FAF7F2'
+    }
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp'),],
 }

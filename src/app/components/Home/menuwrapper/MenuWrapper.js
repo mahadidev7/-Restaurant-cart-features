@@ -1,24 +1,21 @@
-import React from 'react'
-import { MenuDummyData } from '../../../data';
-import MenuItem from './MenuItem';
+/* eslint-disable react/style-prop-object */
+import React from "react";
+import MenuItem from "./MenuItem";
+import MenuTitle from "./MenuTitle";
 
-function MenuWrapper() {
-    const {burgers} = MenuDummyData;
 
+function MenuWrapper({ data, style='' }) {
+  const { name, items } = data;
   return (
-    <div className="grid gap-2 grid-cols-3">
-        <div className="col-span-2 border p-1">
-            <div className="grid gap-2 grid-cols-2">
-                <div className="border-r border-dotted p-1">
-                    <MenuItem name="mr.dfdf fd" description='hello Cow' totalPrice='521' />
-                    <MenuItem name="mr.dfdf fd" description='hello Cow' chicken='521' cow='587' />
-                </div>
-                <div className="border p-1">f</div>
-            </div>
-        </div>
-        <div className="border p-1">sd</div>
+    <div className="border border-dashed p-1 rounded-sm bg-menuBackGroundColor lg:mt-0 mt-10">
+      <MenuTitle text={name} />
+      <div className="">
+        {items?.map((item, key) => (
+          <MenuItem key={key} {...item} style={style} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
 export default MenuWrapper;
