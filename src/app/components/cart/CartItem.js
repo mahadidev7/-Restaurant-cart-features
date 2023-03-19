@@ -5,7 +5,7 @@ import { GiChickenOven, GiCow } from "react-icons/gi";
 function CartItem() {
   return (
     <div className="bg-[#fff] p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3">
-      <img
+      <img loading="lazy"
         src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
         alt="food img"
         className="lg:w-[80px] lg:h-[80px] w-[200px] h-[200px] object-cover rounded-md mx-auto"

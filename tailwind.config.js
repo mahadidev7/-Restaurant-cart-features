@@ -8,7 +8,6 @@ module.exports = {
     colors: {
       primary: '#eb0029',
       secondary: '#ff9d2d',
-      menuBackGroundColor: '#FAF7F2'
     }
   },
   plugins: [require('@tailwindcss/line-clamp'),],

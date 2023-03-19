@@ -36,17 +36,16 @@ function Menu() {
               </div>
               {/* drink right site */}
               <div className="lg:col-span-1 col-span-full">
-                <MenuWrapper data={drink} style="lg:!grid-cols-1" />
+                <MenuWrapper data={drink} style="!block" />
               </div>
             </div>
           </div>
 
           {/* Sandwiches && Sides  */}
-          <div className="grid gap-1 grid-cols-2">
+          <div className="grid gap-1 lg:grid-cols-2 grid-cols-1">
             {/* Sandwiches  */}
             <MenuWrapper data={sandwiches} />
             {/* Sides  */}
-
             <MenuWrapper data={sides} />
           </div>
         </div>
