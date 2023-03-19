@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+/* default style start */
+
+*{
+  font-family: 'Raleway', sans-serif !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1,h2,h3,h4,h5,h6, .MH_appTitle{
+  font-family: 'Bitter', serif !important;
+  font-weight: 700;
 }
 
-.App-link {
-  color: #61dafb;
+.MH_shortTitle{
+  font-family: 'Pacifico', cursive !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MH_appLink{
+  font-family: 'Bitter', serif !important;
+  font-weight: bold;
 }
+.MH_container{
+  width: 1280px;
+  max-width: 100%;
+  padding: 5px;
+  margin: auto;
+  display: block;
+}
+/* default style end */
+
+
+/* Home page style start */
+.MH_heroSection{
+  background-image: url("../src/app/assets/home/heroBG.png");
+  background-position: center ;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/* Home page style end */
+
+/* 
+font-family: 'Bitter', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Raleway', sans-serif;
+ */
