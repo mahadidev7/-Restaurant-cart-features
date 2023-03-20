@@ -184,6 +184,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "drink",
             price: 70,
           },
         ],
@@ -196,6 +197,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "drink",
             price: 70,
           },
         ],
@@ -213,6 +215,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sandwiches",
             price: 170,
           },
         ],
@@ -225,6 +228,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sandwiches",
             price: 720,
           },
         ],
@@ -237,6 +241,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sandwiches",
             price: 520,
           },
         ],
@@ -254,6 +259,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sides",
             price: 170,
           },
         ],
@@ -266,6 +272,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sides",
             price: 720,
           },
         ],
@@ -278,6 +285,7 @@ const MenuDummyData = {
           "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
         amounts: [
           {
+            name: "sides",
             price: 520,
           },
         ],

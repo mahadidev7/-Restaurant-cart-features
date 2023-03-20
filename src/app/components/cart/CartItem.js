@@ -1,29 +1,58 @@
 import React from "react";
 import { Button } from "../share";
+import { foodQuantityUpdate } from "./foodQuantityUpdate";
 import { GiChickenOven, GiCow } from "react-icons/gi";
+import { GrRestaurant } from "react-icons/gr";
 
-function CartItem() {
+function CartItem({
+  id = "",
+  name = "",
+  description = "",
+  amounts = [],
+  img = "",
+}) {
   return (
-    <div className="bg-[#fff] p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3">
-      <img loading="lazy"
-        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+
+
+
+    <div className="bg-white p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3">
+      <img
+        loading="lazy"
+        src={img}
         alt="food img"
         className="lg:w-[80px] lg:h-[80px] w-[200px] h-[200px] object-cover rounded-md mx-auto"
       />
 
-      <div className="p-3">
+      <div className="p-3 w-5/6">
         <GiChickenOven size={25} className="mb-1" />
-        <h3 className="uppercase mb-1">MR. MODERATE</h3>
-        <p className={`text-sm line-clamp-3`}>
-          Burger, coke, fries, chicken nuggets Objectively pontificate quality
-          models before intuitive information. Dramatically Burger,
-        </p>
-        <p>7 × 3 = 20</p>
-      </div>
-      <div className="flex justify-center items-center gap-3">
-        <Button text="-" />
-        <p>452</p>
-        <Button text="+" />
+        <h3 className="uppercase mb-1">{name}</h3>
+        <p className={`text-sm line-clamp-3`}>{description}</p>
+
+        <div className="flex items-center gap-3">
+          {amounts?.map((item, key) => (
+            <div
+              className="flex flex-col gap-3 mt-3 border border-[#999] px-3 py-2 rounded-md"
+              key={key}
+            >
+              {item.name === "chicken" && <GiChickenOven size={20} />
+              }
+              {item.name === "cow" && <GiCow size={20} />}
+              {item.name !== ("cow" || "chicken") && <GrRestaurant size={20} />}
+              <div className="flex items-center font-bold gap-2">
+                <p className="price">1</p>
+                <p>×</p>
+                <p className="price">5</p>
+                <p className="price">=</p>
+                <p className="price">5</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button text="-" />
+                <p>452</p>
+                <Button text="+" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
