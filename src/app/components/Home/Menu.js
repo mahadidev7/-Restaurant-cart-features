@@ -4,7 +4,6 @@ import { AppShortTitle, AppTitle } from "../share";
 import { MenuDummyData } from "../../data";
 import MenuTitle from "./menuwrapper/MenuTitle";
 import MenuWrapper from "./menuwrapper/MenuWrapper";
-import MenuItem from "./menuwrapper/MenuItem";
 
 function Menu() {
   const { burgers, drink, sandwiches, sides } = MenuDummyData;

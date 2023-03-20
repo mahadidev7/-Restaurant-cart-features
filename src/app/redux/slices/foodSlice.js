@@ -17,9 +17,9 @@ export const foodSlice = createSlice({
       // customized Amounts  data
       const newAmountsArrayData = amounts.map((data) => {
         if (data.name === categoryName) {
-          return { ...data, quantity: 1, totalPrice: data.price };
+          return { ...data, quantity: 1, totalPrice: data.price, cart: true };
         } else {
-          return { ...data, quantity: 0, totalPrice: data.price };
+          return { ...data, quantity: 0, totalPrice: 0, cart: false };
         }
       });
 
@@ -39,7 +39,7 @@ export const foodSlice = createSlice({
             item.amounts.map((data) => {
               // find real category food
               if (data.name === categoryName) {
-                return (data.quantity = data.quantity + 1);
+                return (data.quantity = data.quantity + 1, data.totalPrice = data.quantity * data.price,  data.cart = true);
               } else {
                 return data;
               }
@@ -51,12 +51,42 @@ export const foodSlice = createSlice({
       }
     },
 
+    quantityHandler: (state, action) => {
+      state.foodsOfCart.map((item) => {
+        // find real object of foodsOfCart state
+        if (item.id === action.payload.id) {
+          item.amounts.map((data) => {
+            // find real category food
+            if (data.name === action.payload.categoryName) {
+              if(action.payload.type === "decrement" && data.quantity === 1){
+                return
+              }
+              // increment handler 
+              if(action.payload.type === "increment"){
+                return (data.quantity = data.quantity + 1, data.totalPrice = data.quantity * data.price)
+              }
+
+              // decrement handler 
+              if(action.payload.type === "decrement"){
+                return (data.quantity = data.quantity - 1, data.totalPrice = data.quantity * data.price)
+              }
+              return false;
+            } else {
+              return data;
+            }
+          });
+        } else {
+          return item;
+        }
+      });
+    }
+
     // ... 
   },
 });
 
 // All reducers Global export
-export const { addFoodToCart } = foodSlice.actions;
+export const { addFoodToCart, quantityHandler } = foodSlice.actions;
 
 // Selectors - State
 export const selectFoods = (state) => state.foodsOfCart.foodsOfCart;
