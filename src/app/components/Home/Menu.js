@@ -1,12 +1,15 @@
 /* eslint-disable react/style-prop-object */
 import React from "react";
 import { AppShortTitle, AppTitle } from "../share";
-import { MenuDummyData } from "../../data";
 import MenuTitle from "./menuwrapper/MenuTitle";
 import MenuWrapper from "./menuwrapper/MenuWrapper";
+import { useSelector } from "react-redux";
+import { selectAllFoodData } from "../../redux/slices/cartSlice";
 
 function Menu() {
-  const { burgers, drink, sandwiches, sides } = MenuDummyData;
+  const allFoodData = useSelector(selectAllFoodData);
+  const { burgers, drink, sandwiches, sides } = allFoodData;
+
   return (
     <div className="bg-menuBackGroundColor" id="Menu">
       <div className="MH_container z-10 relative">
@@ -35,7 +38,7 @@ function Menu() {
               </div>
               {/* drink right site */}
               <div className="lg:col-span-1 col-span-full">
-                <MenuWrapper data={drink} style="!block" />
+                <MenuWrapper data={drink.regular} style="!block" />
               </div>
             </div>
           </div>
@@ -43,9 +46,9 @@ function Menu() {
           {/* Sandwiches && Sides  */}
           <div className="grid gap-1 lg:grid-cols-2 grid-cols-1">
             {/* Sandwiches  */}
-            <MenuWrapper data={sandwiches} />
+            <MenuWrapper data={sandwiches.regular} />
             {/* Sides  */}
-            <MenuWrapper data={sides} />
+            <MenuWrapper data={sides.regular} />
           </div>
         </div>
       </div>

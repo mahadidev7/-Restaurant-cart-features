@@ -3,7 +3,8 @@ import React from "react";
 import { GiChickenOven, GiCow } from "react-icons/gi";
 import { GrRestaurant } from "react-icons/gr";
 import { useDispatch } from "react-redux";
-import { addFoodToCart } from "../../../redux/slices/foodSlice";
+import { addFoodToCart } from "../../../redux/slices/cartSlice";
+import { disabledBtnUpdate } from "../../../redux/slices/foodSlice";
 import { Button } from "../../share";
 
 function MenuItem({
@@ -16,17 +17,17 @@ function MenuItem({
 }) {
   const dispatch = useDispatch();
 
-  const handelCart = (categoryName) => {
+  const handelCart = (categoryName, price) => {
     const item = {
       id,
       name,
       description,
       img,
-      amounts,
-      cart: true,
-      categoryName
+      amounts: [{name:categoryName, price, quantity: 1, totalPrice:price, shopping: false}],
     };
     dispatch(addFoodToCart(item));
+    dispatch(disabledBtnUpdate({name:categoryName, id}));
+
     // console.log(item)
   };
 
@@ -71,7 +72,7 @@ const PriceSplit = ({ name = "", price = "", handelCart }) => {
       <p className="bg-secondary py-1 text-white rounded-full font-semibold price mb-2 text-center">
         {price || " "} TK
       </p>
-      <Button handelClick={() => handelCart(name)} style="!bg-[#333]" />
+      <Button disabled={false} handelClick={() => handelCart(name, price)} style="!bg-[#333]" />
     </div>
   );
 };

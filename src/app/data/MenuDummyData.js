@@ -14,10 +14,12 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 70,
+              added: false,
             },
             {
               name: "cow",
               price: 70,
+              added: false,
             },
           ],
         },
@@ -31,10 +33,12 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 90,
+              added: false,
             },
             {
               name: "cow",
               price: 110,
+              added: false,
             },
           ],
         },
@@ -48,10 +52,12 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 150,
+              added: false,
             },
             {
               name: "cow",
               price: 170,
+              added: false,
             },
           ],
         },
@@ -64,6 +70,7 @@ const MenuDummyData = {
             {
               name: "cow",
               price: 190,
+              added: false,
             },
           ],
         },
@@ -81,10 +88,12 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 190,
+              added: false,
             },
             {
               name: "cow",
               price: 200,
+              added: false,
             },
           ],
         },
@@ -97,6 +106,7 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 190,
+              added: false,
             },
           ],
         },
@@ -109,6 +119,7 @@ const MenuDummyData = {
             {
               name: "cow",
               price: 190,
+              added: false,
             },
           ],
         },
@@ -122,10 +133,12 @@ const MenuDummyData = {
             {
               name: "chicken",
               price: 150,
+              added: false,
             },
             {
               name: "cow",
               price: 170,
+              added: false,
             },
           ],
         },
@@ -143,6 +156,7 @@ const MenuDummyData = {
             {
               name: "cow",
               price: 310,
+              added: false,
             },
           ],
         },
@@ -155,6 +169,7 @@ const MenuDummyData = {
             {
               name: "cow",
               price: 340,
+              added: false,
             },
           ],
         },
@@ -167,6 +182,7 @@ const MenuDummyData = {
             {
               name: "cow",
               price: 380,
+              added: false,
             },
           ],
         },
@@ -175,122 +191,139 @@ const MenuDummyData = {
   },
   drink: {
     name: "drink",
-    items: [
-      {
-        id: 9,
-        name: "mr. mini",
-        img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "drink",
-            price: 70,
-          },
-        ],
-      },
-      {
-        id: 10,
-        name: "mr. moderate",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "drink",
-            price: 70,
-          },
-        ],
-      },
-    ],
+    regular: {
+      name: "regular",
+      items: [
+        {
+          id: 9,
+          name: "mr. mini",
+          img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "drink",
+              price: 70,
+              added: false,
+            },
+          ],
+        },
+        {
+          id: 10,
+          name: "mr. moderate",
+          img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "drink",
+              price: 70,
+              added: false,
+            },
+          ],
+        },
+      ],
+    },
   },
   sandwiches: {
     name: "sandwiches",
-    items: [
-      {
-        id: 10,
-        name: "mr. mini",
-        img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sandwiches",
-            price: 170,
-          },
-        ],
-      },
-      {
-        id: 11,
-        name: "mr. moderate",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sandwiches",
-            price: 720,
-          },
-        ],
-      },
-      {
-        id: 12,
-        name: "mr. moderate",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sandwiches",
-            price: 520,
-          },
-        ],
-      },
-    ],
+    regular: {
+      name: "regular",
+      items: [
+        {
+          id: 10,
+          name: "mr. mini",
+          img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sandwiches",
+              price: 170,
+              added: false,
+            },
+          ],
+        },
+        {
+          id: 11,
+          name: "mr. moderate",
+          img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sandwiches",
+              price: 720,
+              added: false,
+            },
+          ],
+        },
+        {
+          id: 12,
+          name: "mr. moderate",
+          img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sandwiches",
+              price: 520,
+              added: false,
+            },
+          ],
+        },
+      ],
+    },
   },
   sides: {
     name: "sides",
-    items: [
-      {
-        id: 13,
-        name: "mr. mini",
-        img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sides",
-            price: 170,
-          },
-        ],
-      },
-      {
-        id: 14,
-        name: "mr. moderate",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sides",
-            price: 720,
-          },
-        ],
-      },
-      {
-        id: 15,
-        name: "mr. moderate",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        description:
-          "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
-        amounts: [
-          {
-            name: "sides",
-            price: 520,
-          },
-        ],
-      },
-    ],
+    regular: {
+      name: "regular",
+      items: [
+        {
+          id: 13,
+          name: "mr. mini",
+          img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sides",
+              price: 170,
+              added: false,
+            },
+          ],
+        },
+        {
+          id: 14,
+          name: "mr. moderate",
+          img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sides",
+              price: 720,
+              added: false,
+            },
+          ],
+        },
+        {
+          id: 15,
+          name: "mr. moderate",
+          img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          description:
+            "Burger, coke, fries, chicken nuggets Objectively pontificate quality models before intuitive information. Dramatically Burger, coke, fries, chicken nuggets",
+          amounts: [
+            {
+              name: "sides",
+              price: 520,
+              added: false,
+            },
+          ],
+        },
+      ],
+    },
   },
 };
 
