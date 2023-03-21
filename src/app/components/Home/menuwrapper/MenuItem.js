@@ -16,7 +16,7 @@ function MenuItem({
 }) {
   const dispatch = useDispatch();
 
-  const handelCart = (categoryName, price) => {
+  const handelCart = (categoryName) => {
     const item = {
       id,
       name,
@@ -71,7 +71,7 @@ const PriceSplit = ({ name = "", price = "", handelCart }) => {
       <p className="bg-secondary py-1 text-white rounded-full font-semibold price mb-2 text-center">
         {price || " "} TK
       </p>
-      <Button handelClick={() => handelCart(name, price)} style="!bg-[#333]" />
+      <Button handelClick={() => handelCart(name)} style="!bg-[#333]" />
     </div>
   );
 };

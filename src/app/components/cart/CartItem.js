@@ -5,7 +5,7 @@ import { GiChickenOven, GiCow } from "react-icons/gi";
 import { GrRestaurant } from "react-icons/gr";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { quantityHandler } from "../../redux/slices/foodSlice";
+import { cartCategoryDelete, cartDelete, quantityUpdate } from "../../redux/slices/foodSlice";
 
 function CartItem({
   id = "",
@@ -16,16 +16,27 @@ function CartItem({
 }) {
   const dispatch = useDispatch();
 
-  const quantityUpdateHandler = (item) => {
-    dispatch(quantityHandler({ ...item, id }));
+  const QuantityUpdateHandler = (item) => {
+    dispatch(quantityUpdate({ ...item, id }));
   };
 
-  const deleteHandler = (item) => {
-    // dispatch(quantityHandler({ ...item, id }));
+  // cart item Delete from redux
+  const DeleteCartCategoryHandler = (item) => {
+    dispatch(cartCategoryDelete(item));
+  };
+  
+  // category Delete from cart and from redux
+  const DeleteHandler = (id) => {
+    dispatch(cartDelete(id));
   };
 
   return (
-    <div className="bg-white p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3">
+    <div className="bg-white p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3 relative">
+      <Button
+        text={<FaTimes size={14} className="w-fit" />}
+        style="absolute top-3 right-3 !bg-[#dad8d8] hover:!bg-primary !px-1"
+        handelClick={() => DeleteHandler(id)}
+      />
       <img
         loading="lazy"
         src={img}
@@ -46,12 +57,14 @@ function CartItem({
                   className="flex flex-col gap-3 mt-3 border border-[#999] px-3 py-2 rounded-md relative pt-7"
                   key={key}
                 >
-                
-                <Button 
-                  text={<FaTimes size={14} className='w-fit' />} style='absolute top-3 right-3 bg-[#dad8d8] hover:bg-primary px-1'
-                  handelClick={()=> deleteHandler()}
-                />
-                
+                  <Button
+                    text={<FaTimes size={14} className="w-fit" />}
+                    style="absolute top-3 right-3 !bg-[#dad8d8] hover:!bg-primary !px-1"
+                    handelClick={() =>
+                      DeleteCartCategoryHandler({ categoryName: item.name, id: id })
+                    }
+                  />
+
                   {item.name === "chicken" && <GiChickenOven size={20} />}
                   {item.name === "cow" && <GiCow size={20} />}
                   {item.name !== "cow" && item.name !== "chicken" && (
@@ -70,7 +83,7 @@ function CartItem({
                       text="-"
                       style="!bg-secondary"
                       handelClick={() =>
-                        quantityUpdateHandler({
+                        QuantityUpdateHandler({
                           type: "decrement",
                           categoryName: item.name,
                         })
@@ -81,7 +94,7 @@ function CartItem({
                       text="+"
                       style="!bg-secondary"
                       handelClick={() =>
-                        quantityUpdateHandler({
+                        QuantityUpdateHandler({
                           type: "increment",
                           categoryName: item.name,
                         })

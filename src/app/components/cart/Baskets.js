@@ -5,10 +5,13 @@ import { AppTitle } from "../share";
 import CartItem from "./CartItem";
 
 function Baskets() {
+  // const [allCartData, setAllCartData] = useState([]);
   const allFoodsOfCartRedux = useSelector(selectFoods);
-console.log('====================================');
-console.log(allFoodsOfCartRedux);
-console.log('====================================');
+
+// useEffect(() => {
+//   setAllCartData(allFoodsOfCartRedux)
+// }, [allFoodsOfCartRedux]);
+
   return (
     <div className="col-span-2 p-3 py-6">
       <AppTitle firstText="Products" />
