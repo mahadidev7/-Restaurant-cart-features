@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
         state.foodsOfCart.map((item) => {
           // find real object of foodsOfCart state
           if (item.id === action.payload.id) {
-            item.amounts = [...item.amounts, ...action.payload.amounts]
+            item.amounts = [...item.amounts, ...action.payload.amounts];
           } else {
             return item;
           }
@@ -75,8 +75,12 @@ export const cartSlice = createSlice({
       state.foodsOfCart.map((item) => {
         // find real object of foodsOfCart state
         if (item.id === action.payload.cartId) {
-          const result = item.amounts.filter((item) => item.name !== action.payload.categoryName);
-          item.amounts = result
+          const result = item.amounts.filter(
+            (item) => item.name !== action.payload.categoryName
+          );
+          item.amounts = result;
+          item.categoryShop = item.categoryShop - 1
+          return true;
         } else {
           return item;
         }
@@ -84,19 +88,30 @@ export const cartSlice = createSlice({
     },
 
     cartDelete: (state, action) => {
-      const result = state.foodsOfCart.filter((item) => item.id !== action.payload);
-      state.foodsOfCart = result ;
+      const result = state.foodsOfCart.filter(
+        (item) => item.id !== action.payload
+      );
+      state.foodsOfCart = result;
     },
 
     goToShop: (state, action) => {
       state.foodsOfCart.map((item) => {
         // find real object of foodsOfCart state
         if (item.id === action.payload.cartId) {
-          item.amounts.map(data => {
-            if(data.name === action.payload.categoryName){
+          item.amounts.map((data) => {
+            if (data.name === action.payload.categoryName) {
               data.shopping = !data.shopping;
             }
-          })
+          });
+          if (action.payload.type === "increment") {
+            item.categoryShop = item.categoryShop + 1;
+          }
+          if (action.payload.type === "decrement") {
+            if (item.categoryShop === 0) {
+              return (item.categoryShop = 0);
+            }
+            return (item.categoryShop = item.categoryShop - 1);
+          }
         } else {
           return item;
         }
@@ -108,8 +123,13 @@ export const cartSlice = createSlice({
 });
 
 // All reducers Global export
-export const { addFoodToCart, quantityUpdate, cartCategoryDelete, cartDelete, goToShop } =
-  cartSlice.actions;
+export const {
+  addFoodToCart,
+  quantityUpdate,
+  cartCategoryDelete,
+  cartDelete,
+  goToShop,
+} = cartSlice.actions;
 
 // Selectors - State
 export const selectCarts = (state) => state.foodsOfCart.foodsOfCart;

@@ -1,42 +1,19 @@
 /* eslint-disable react/style-prop-object */
 import React from "react";
 import { Button } from "../share";
-import { GiChickenOven, GiCow } from "react-icons/gi";
-import { GrRestaurant } from "react-icons/gr";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import {
-  cartCategoryDelete,
-  cartDelete,
-  goToShop,
-  quantityUpdate,
-} from "../../redux/slices/cartSlice";
+import { cartDelete } from "../../redux/slices/cartSlice";
+import CounterCard from "./CounterCard";
 
-function CartItem({
-  id = "",
-  name = "",
-  description = "",
-  amounts = [],
-  img = "",
-}) {
+function CartItem({ item }) {
   const dispatch = useDispatch();
 
-  const QuantityUpdateHandler = (item) => {
-    dispatch(quantityUpdate({ ...item, id }));
-  };
-
-  // cart item Delete from redux
-  const DeleteCartCategoryHandler = (item) => {
-    dispatch(cartCategoryDelete(item));
-  };
-
+  const { id, name, description, amounts, img } = item;
+  
   // category Delete from cart and from redux
   const DeleteHandler = (id) => {
     dispatch(cartDelete(id));
-  };
-  // ready for shop
-  const goToShopHandler = (item) => {
-    dispatch(goToShop(item));
   };
 
   return (
@@ -59,57 +36,8 @@ function CartItem({
 
         {/* Category selection of price  */}
         <div className="flex items-center gap-3 flex-wrap">
-          {amounts?.map((item, key) => (
-            <div
-              className="flex flex-col gap-3 mt-3 border border-[#999] p-3 rounded-md relative cursor-pointer hover:shadow-lg pt-7"
-              key={key}
-            >
-            <Button
-                text={<FaTimes size={14} />}
-                style="!bg-[#999] hover:!bg-primary !px-1 w-fit absolute top-3 right-3"
-                handelClick={() =>
-                  DeleteCartCategoryHandler({ categoryName: item.name, cartId: id })
-                }
-              />
-
-              {item.name === "chicken" && <GiChickenOven size={20} />}
-              {item.name === "cow" && <GiCow size={20} />}
-              {item.name !== "cow" && item.name !== "chicken" && (
-                <GrRestaurant size={20} />
-              )}
-
-              <div className="flex items-center font-bold gap-2">
-                <p className="price">{item.price}</p>
-                <p>×</p>
-                <p className="price">{item.quantity}</p>
-                <p className="price">=</p>
-                <p className="price">{item.totalPrice}</p>
-              </div>
-              <div className="flex items-center gap-2 border-t pt-2 border-[#e7e5e5]">
-                <Button
-                  text="-"
-                  style="!bg-secondary"
-                  handelClick={() =>
-                    QuantityUpdateHandler({
-                      type: "decrement",
-                      categoryName: item.name,
-                    })
-                  }
-                />
-                <p>{item.quantity}</p>
-                <Button
-                  text="+"
-                  style="!bg-secondary"
-                  handelClick={() =>
-                    QuantityUpdateHandler({
-                      type: "increment",
-                      categoryName: item.name,
-                    })
-                  }
-                />
-              </div>
-              <Button text="Add to Shop" handelClick={()=> goToShopHandler({ categoryName: item.name, cartId: id })} />
-            </div>
+          {amounts?.map((data, key) => (
+            <CounterCard data={data} item={item} key={key} />
           ))}
         </div>
       </div>

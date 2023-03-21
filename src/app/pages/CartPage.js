@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../components'
-import { Baskets, Payment } from '../components/cart'
+import { AccountManagement, Baskets } from '../components/cart'
 
 function CartPage() {
   return (
@@ -8,7 +8,7 @@ function CartPage() {
       <Header />
       <div className="grid lg:grid-cols-3 MH_container !my-5">
         <Baskets />
-        <Payment />
+        <AccountManagement />
       </div>
     </>
   )

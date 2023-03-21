@@ -47,7 +47,13 @@ p{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+table tr th{
+  padding: 7px 5px !important;
+  border-bottom: 1px solid rgb(197, 195, 195);
+}
+table tr, table tr td{
+  text-align: left;
+}
 
 /* Home page style end */
 

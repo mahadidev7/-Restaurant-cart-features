@@ -4,7 +4,6 @@ import { GiChickenOven, GiCow } from "react-icons/gi";
 import { GrRestaurant } from "react-icons/gr";
 import { useDispatch } from "react-redux";
 import { addFoodToCart } from "../../../redux/slices/cartSlice";
-import { disabledBtnUpdate } from "../../../redux/slices/foodSlice";
 import { Button } from "../../share";
 
 function MenuItem({
@@ -13,6 +12,7 @@ function MenuItem({
   description = "",
   img = "",
   amounts = [],
+  categoryShop,
   style = "",
 }) {
   const dispatch = useDispatch();
@@ -24,9 +24,10 @@ function MenuItem({
       description,
       img,
       amounts: [{name:categoryName, price, quantity: 1, totalPrice:price, shopping: false}],
+      categoryShop,
     };
     dispatch(addFoodToCart(item));
-    dispatch(disabledBtnUpdate({name:categoryName, id}));
+    // dispatch(disabledBtnUpdate({name:categoryName, id}));
 
     // console.log(item)
   };

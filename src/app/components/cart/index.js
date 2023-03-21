@@ -1,4 +1,5 @@
 export { default as Baskets } from './Baskets'
-export { default as Payment } from './Payment'
+export { default as AccountManagement } from './AccountManagement'
 export { default as CartItem } from './CartItem'
 export { default as foodQuantityUpdate } from './foodQuantityUpdate'
+export { default as AccountItem } from './AccountItem'
