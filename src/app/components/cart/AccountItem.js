@@ -8,7 +8,6 @@ function AccountItem({
   amounts = [],
   amountsTotal,
 }) {
-
   return (
     <div className="p-3">
       <div className="">
@@ -22,26 +21,21 @@ function AccountItem({
             </tr>
           </thead>
           <tbody>
-            {amounts?.map((item, key) => {
-              if (item.shopping) {
-                return (
-                  <tr key={key}>
-                    <td>
-                      <p>
-                         {item.name} - {item?.price}tk
-                      </p>
-                    </td>
-                    <td>
-                      <p>{item?.quantity}</p>
-                    </td>
-                    <td>
-                      <h6 className="font-bold">= {item?.totalPrice} tk</h6>
-                    </td>
-                  </tr>
-                );
-              }
-              return false;
-            })}
+            {amounts?.map((item, key) => (
+              <tr key={key}>
+                <td>
+                  <p>
+                    {item.name} - {item?.price}tk
+                  </p>
+                </td>
+                <td>
+                  <p>{item?.quantity}</p>
+                </td>
+                <td>
+                  <h6 className="font-bold">= {item?.totalPrice} tk</h6>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

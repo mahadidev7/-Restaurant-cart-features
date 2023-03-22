@@ -4,28 +4,29 @@ import { createSlice } from "@reduxjs/toolkit";
 import MenuDummyData from "../../data/MenuDummyData";
 
 const initialState = {
-  foodsOfCart: [],
+  foodsOfCartData: [],
   allFoodData: MenuDummyData,
+  proceedHistoryData: [],
 };
 
 export const cartSlice = createSlice({
   name: "foodsOfCart",
   initialState,
   reducers: {
-    // this addFoodToCart reducers creates a  new Object of the foodsOfCart state
+    // this addFoodToCart reducers creates a  new Object of the foodsOfCartData state
 
     addFoodToCart: (state, action) => {
-      const result = state.foodsOfCart.find(
+      const result = state.foodsOfCartData.find(
         (item) => item.id === action.payload.id
       );
 
       if (!result) {
         // firstly new data push
-        state.foodsOfCart = [...state.foodsOfCart, action.payload];
+        state.foodsOfCartData = [...state.foodsOfCartData, action.payload];
         return;
       } else {
-        state.foodsOfCart.map((item) => {
-          // find real object of foodsOfCart state
+        state.foodsOfCartData.map((item) => {
+          // find real object of foodsOfCartData state
           if (item.id === action.payload.id) {
             item.amounts = [...item.amounts, ...action.payload.amounts];
           } else {
@@ -37,8 +38,8 @@ export const cartSlice = createSlice({
     },
 
     quantityUpdate: (state, action) => {
-      state.foodsOfCart.map((item) => {
-        // find real object of foodsOfCart state
+      state.foodsOfCartData.map((item) => {
+        // find real object of foodsOfCartData state
         if (item.id === action.payload.id) {
           item.amounts.map((data) => {
             // find real category food
@@ -73,8 +74,8 @@ export const cartSlice = createSlice({
     },
 
     cartCategoryDelete: (state, action) => {
-      state.foodsOfCart.map((item) => {
-        // find real object of foodsOfCart state
+      state.foodsOfCartData.map((item) => {
+        // find real object of foodsOfCartData state
         if (item.id === action.payload.cartId) {
           const result = item.amounts.filter(
             (item) => item.name !== action.payload.categoryName
@@ -89,15 +90,15 @@ export const cartSlice = createSlice({
     },
 
     cartDelete: (state, action) => {
-      const result = state.foodsOfCart.filter(
+      const result = state.foodsOfCartData.filter(
         (item) => item.id !== action.payload
       );
-      state.foodsOfCart = result;
+      state.foodsOfCartData = result;
     },
 
     goToShop: (state, action) => {
-      state.foodsOfCart.map((item) => {
-        // find real object of foodsOfCart state
+      state.foodsOfCartData.map((item) => {
+        // find real object of foodsOfCartData state
         if (item.id === action.payload.cartId) {
           item.amounts.map((data) => {
             if (data.name === action.payload.categoryName) {
@@ -119,8 +120,8 @@ export const cartSlice = createSlice({
       });
     },
 
-    amountsTotalCounter: (state, action) => {
-      state.foodsOfCart.map((item) => {
+    amountsTotalCounter: (state) => {
+      state.foodsOfCartData.map((item) => {
         let resultTwo = item.amounts.map((data) => {
           if (data.shopping) {
             return data.totalPrice;
@@ -135,6 +136,9 @@ export const cartSlice = createSlice({
       });
     },
 
+    proceedHistoryCollect: (state, action) => {
+      state.proceedHistoryData = [...state.proceedHistoryData, action.payload]
+    },
     // ...
   },
 });
@@ -147,10 +151,12 @@ export const {
   cartDelete,
   goToShop,
   amountsTotalCounter,
+  proceedHistoryCollect,
 } = cartSlice.actions;
 
 // Selectors - State
-export const selectCarts = (state) => state.foodsOfCart.foodsOfCart;
+export const selectCarts = (state) => state.foodsOfCart.foodsOfCartData;
 export const selectAllFoodData = (state) => state.foodsOfCart.allFoodData;
+export const selecProceedHistoryData = (state) => state.foodsOfCart.proceedHistoryData;
 
 export default cartSlice.reducer;

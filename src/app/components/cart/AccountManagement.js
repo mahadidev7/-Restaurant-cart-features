@@ -1,35 +1,44 @@
 /* eslint-disable react/style-prop-object */
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectCarts } from "../../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { proceedHistoryCollect, selectCarts } from "../../redux/slices/cartSlice";
 import AccountItem from "./AccountItem";
 import { Button } from "../share";
 
 function AccountManagement() {
+  const dispatch = useDispatch()
   const allFoodsOfCartRedux = useSelector(selectCarts);
   const [allActiveShopping, setAllActiveShopping] =
     useState([]);
   const [proceedTotalAmount, setProceedTotalAmount] = useState(0);
 
   const proceedHandler = () => {
-
+    if(proceedTotalAmount > 0){
+      dispatch(proceedHistoryCollect({a:100}))
+    }
   };
-
-  // const proceedTotalAmountFun = (amount=0) => {
-  //   setProceedTotalAmount(proceedTotalAmount => proceedTotalAmount + amount);
-  // }
 
   useEffect(() => {
     // find shop for ready to proceed
     const result = allFoodsOfCartRedux.map(
       (item) => item.categoryShop > 0 && item
     );
-    const data = result.filter(Boolean);
-    setAllActiveShopping(data);
+    const purifyCategoryShop = result.filter(Boolean);
+
+    const purifyAmountsData = purifyCategoryShop.map(v => {
+      let result = v.amounts.map(d => d.shopping === true && d)
+
+      const purifyAmount = result.filter(Boolean);
+      return {...v, amounts: purifyAmount}
+
+    })
+
+    setAllActiveShopping(purifyAmountsData);
 
   }, [allFoodsOfCartRedux]);
 
   useEffect(() => {
+    // Get proceed Total amount 
     let sunResult = allActiveShopping.reduce(function(accumulator, currentValue) {
       return accumulator + currentValue.amountsTotal;
     }, 0);

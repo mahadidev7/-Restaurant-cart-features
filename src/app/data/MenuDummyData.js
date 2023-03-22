@@ -214,7 +214,7 @@ const MenuDummyData = {
   drink: {
     name: "drink",
     regular: {
-      name: "regular",
+      name: "drink",
       items: [
         {
           id: 9,
@@ -254,7 +254,7 @@ const MenuDummyData = {
   sandwiches: {
     name: "sandwiches",
     regular: {
-      name: "regular",
+      name: "sandwiches",
       items: [
         {
           id: 10,
@@ -310,7 +310,7 @@ const MenuDummyData = {
   sides: {
     name: "sides",
     regular: {
-      name: "regular",
+      name: "sides",
       items: [
         {
           id: 13,

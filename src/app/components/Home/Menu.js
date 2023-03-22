@@ -38,7 +38,7 @@ function Menu() {
               </div>
               {/* drink right site */}
               <div className="lg:col-span-1 col-span-full">
-                <MenuWrapper data={drink.regular} style="!block" />
+                <MenuWrapper data={drink.regular} layout="block" />
               </div>
             </div>
           </div>
