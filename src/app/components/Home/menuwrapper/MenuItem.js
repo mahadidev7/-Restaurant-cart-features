@@ -2,11 +2,14 @@
 import React from "react";
 import { GiChickenOven, GiCow } from "react-icons/gi";
 import { useDispatch } from "react-redux";
-import { addFoodToCart } from "../../../redux/slices/cartSlice";
+import { addFoodToCart, disabledBtnUpdate } from "../../../redux/slices/cartSlice";
 import { Button } from "../../share";
+// import { useSelector } from "react-redux";
+// import { selectAllFoodData } from "../../../redux/slices/cartSlice";
 
 function MenuItem({ assets, layout='flex' }) {
   const { id, name, description, img, amounts, categoryShop, style } = assets;
+  // const allFoodData = useSelector(selectAllFoodData);
   const dispatch = useDispatch();
 
   const handelCart = (categoryName, price) => {
@@ -23,7 +26,8 @@ function MenuItem({ assets, layout='flex' }) {
       ],
     };
     dispatch(addFoodToCart(item));
-    // dispatch(disabledBtnUpdate({name:categoryName, id}));
+
+    // dispatch(disabledBtnUpdate({name:data.name, id}));
 
     // console.log(item)
   };
@@ -69,7 +73,6 @@ const PriceSplit = ({ name = "", price = "", handelCart }) => {
         {price || " "} TK
       </p>
       <Button
-        disabled={false}
         handelClick={() => handelCart(name, price)}
         style="!bg-secondary"
       />

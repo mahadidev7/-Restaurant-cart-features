@@ -11,7 +11,8 @@ function AccountItem({
   return (
     <div className="p-3">
       <div className="">
-        <h4 className="uppercase">{name}</h4>
+        <h4 className="uppercase text-left">{name}</h4>
+        <p className="line-clamp-1 text-left">{description}</p>
         <table className="table border-separate border border-[#ddd6d6] rounded-md w-full">
           <thead>
             <tr>

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Header } from '../components'
-import { AccountManagement, Baskets } from '../components/cart'
+import React from "react";
+import { Header } from "../components";
+import { AccountManagement, Baskets } from "../components/cart";
 
 function CartPage() {
   return (
@@ -11,7 +11,7 @@ function CartPage() {
         <AccountManagement />
       </div>
     </>
-  )
+  );
 }
 
-export default CartPage
+export default CartPage;

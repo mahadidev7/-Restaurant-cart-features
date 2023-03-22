@@ -1,17 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/home/logo.png";
-
-const Navigation = [
-  {
-    url: "/",
-    name: "Home",
-  },
-  {
-    url: "/cartpage",
-    name: "Cart",
-  },
-];
+import { Navigation } from "../../utility/Navigation";
 
 function Header() {
   return (

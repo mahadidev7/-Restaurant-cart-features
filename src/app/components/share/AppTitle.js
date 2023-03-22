@@ -1,8 +1,8 @@
 import React from "react";
 
-function AppTitle({ firstText = "", secondText = "", style }) {
+function AppTitle({ firstText = "", secondText = "", style, ...rest }) {
   return (
-    <div className={`flex gap-3 justify-center md:justify-start  ${style}`}>
+    <div className={`flex gap-3 justify-center md:justify-start  ${style}`} {...rest}>
       <p className="md:text-[55px] MH_appTitle font-bold text-5xl">
         {firstText}
       </p>

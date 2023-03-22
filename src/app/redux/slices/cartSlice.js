@@ -6,7 +6,7 @@ import MenuDummyData from "../../data/MenuDummyData";
 const initialState = {
   foodsOfCartData: [],
   allFoodData: MenuDummyData,
-  proceedHistoryData: [],
+  orderHistoryData: [],
 };
 
 export const cartSlice = createSlice({
@@ -28,7 +28,15 @@ export const cartSlice = createSlice({
         state.foodsOfCartData.map((item) => {
           // find real object of foodsOfCartData state
           if (item.id === action.payload.id) {
-            item.amounts = [...item.amounts, ...action.payload.amounts];
+            let res = item.amounts.map(value => value.name === action.payload.amounts[0].name)
+            let result = res.filter(Boolean)
+            if(!result[0]){
+              item.amounts = [...item.amounts, ...action.payload.amounts];
+              return true
+            }
+            alert("This Product is already Added")
+            return false
+            
           } else {
             return item;
           }
@@ -136,9 +144,14 @@ export const cartSlice = createSlice({
       });
     },
 
-    proceedHistoryCollect: (state, action) => {
-      state.proceedHistoryData = [...state.proceedHistoryData, action.payload]
+    orderHistoryCollect: (state, action) => {
+      state.orderHistoryData = [...state.orderHistoryData, action.payload]
     },
+
+    disabledBtnUpdate: (state, action) => {
+      state.orderHistoryData = [...state.orderHistoryData, action.payload]
+    },
+
     // ...
   },
 });
@@ -151,12 +164,13 @@ export const {
   cartDelete,
   goToShop,
   amountsTotalCounter,
-  proceedHistoryCollect,
+  orderHistoryCollect,
+  disabledBtnUpdate,
 } = cartSlice.actions;
 
 // Selectors - State
 export const selectCarts = (state) => state.foodsOfCart.foodsOfCartData;
 export const selectAllFoodData = (state) => state.foodsOfCart.allFoodData;
-export const selecProceedHistoryData = (state) => state.foodsOfCart.proceedHistoryData;
+export const selectOrderHistoryData = (state) => state.foodsOfCart.orderHistoryData;
 
 export default cartSlice.reducer;

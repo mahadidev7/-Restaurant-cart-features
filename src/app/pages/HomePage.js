@@ -1,14 +1,14 @@
-import React from 'react'
-import { Header, Hero, Menu } from '../components'
+import React from "react";
+import { Header, Hero, Menu } from "../components";
 
 function HomePage() {
   return (
     <>
-        <Header />
-        <Hero />
-        <Menu />
+      <Header />
+      <Hero />
+      <Menu />
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

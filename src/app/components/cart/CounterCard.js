@@ -16,8 +16,9 @@ function CounterCard({ data, item }) {
   const dispatch = useDispatch();
   const [type, setType] = useState("increment");
   const [typeHelper, setTypeHelper] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // cart quantity update 
+  // cart quantity update
   const QuantityUpdateHandler = (assets) => {
     dispatch(quantityUpdate({ ...assets, id: item.id }));
     dispatch(amountsTotalCounter());
@@ -34,15 +35,22 @@ function CounterCard({ data, item }) {
     dispatch(goToShop(assets));
     setTypeHelper(!typeHelper);
     dispatch(amountsTotalCounter());
+    setLoading(true)
   };
 
-useEffect(() => {
-  if(typeHelper){
-    setType("decrement")
-  }else{
-    setType("increment")
-  }
-}, [typeHelper]);
+  useEffect(() => {
+    if (typeHelper) {
+      setType("decrement");
+    } else {
+      setType("increment");
+    }
+  }, [typeHelper]);
+
+  useEffect(() => {
+    setTimeout(function(){
+      setLoading(false)
+   }, 3000);
+  }, [loading]);
 
   return (
     <div
@@ -99,10 +107,12 @@ useEffect(() => {
         />
       </div>
       <Button
-        style="!bg-black"
-        text={data.shopping ? "remove" : "Add to Shop"}
-        handelClick={() =>
-          goToShopHandler({ categoryName: data.name, cartId: item.id, type })
+        disabled={loading}
+        style={loading ? "bg-white !text-black": "!bg-black"}
+        text={loading ? "wait...": data.shopping ? "remove" : "Add to Shop"}
+        handelClick={() =>{
+          !loading && goToShopHandler({ categoryName: data.name, cartId: item.id, type })
+        }
         }
       />
     </div>
