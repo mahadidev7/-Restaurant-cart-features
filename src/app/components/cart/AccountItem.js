@@ -6,14 +6,8 @@ function AccountItem({
   description = "",
   img = "",
   amounts = [],
-  proceedTotalAmountFun
+  amountsTotal,
 }) {
-
-  useEffect(() => {
-   const result = amounts?.map((item) => item.shopping && item.totalPrice)
-    const df = result.filter(Boolean)
-    console.log(df);
-  }, [amounts]);
 
   return (
     <div className="p-3">
@@ -34,14 +28,14 @@ function AccountItem({
                   <tr key={key}>
                     <td>
                       <p>
-                        ({key + 1}) {item.name} - {item?.price}tk
+                         {item.name} - {item?.price}tk
                       </p>
                     </td>
                     <td>
                       <p>{item?.quantity}</p>
                     </td>
                     <td>
-                      <h6 className="font-bold">= {item?.totalPrice}</h6>
+                      <h6 className="font-bold">= {item?.totalPrice} tk</h6>
                     </td>
                   </tr>
                 );

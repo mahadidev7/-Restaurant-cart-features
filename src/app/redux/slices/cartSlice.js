@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import { createSlice } from "@reduxjs/toolkit";
 import MenuDummyData from "../../data/MenuDummyData";
@@ -65,7 +66,6 @@ export const cartSlice = createSlice({
               return data;
             }
           });
-
         } else {
           return item;
         }
@@ -119,11 +119,21 @@ export const cartSlice = createSlice({
       });
     },
 
-    // amountsTotalCounter: (state, action) => {
-    //   state.foodsOfCart.map((item) => {
+    amountsTotalCounter: (state, action) => {
+      state.foodsOfCart.map((item) => {
+        let resultTwo = item.amounts.map((data) => {
+          if (data.shopping) {
+            return data.totalPrice;
+          }
+          return 0;
+        });
+        let sum = resultTwo.reduce(function (accumulator, currentValue) {
+          return accumulator + currentValue;
+        }, 0);
 
-    //   });
-    // },
+        item.amountsTotal = sum;
+      });
+    },
 
     // ...
   },
@@ -136,6 +146,7 @@ export const {
   cartCategoryDelete,
   cartDelete,
   goToShop,
+  amountsTotalCounter,
 } = cartSlice.actions;
 
 // Selectors - State

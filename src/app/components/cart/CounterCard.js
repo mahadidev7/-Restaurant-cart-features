@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+  amountsTotalCounter,
   cartCategoryDelete,
   goToShop,
   quantityUpdate,
@@ -19,17 +20,20 @@ function CounterCard({ data, item }) {
   // cart quantity update 
   const QuantityUpdateHandler = (assets) => {
     dispatch(quantityUpdate({ ...assets, id: item.id }));
+    dispatch(amountsTotalCounter());
   };
 
   // cart item Delete from redux
   const DeleteCartCategoryHandler = (assets) => {
     dispatch(cartCategoryDelete(assets));
+    dispatch(amountsTotalCounter());
   };
 
   // ready for shop
   const goToShopHandler = (assets) => {
     dispatch(goToShop(assets));
     setTypeHelper(!typeHelper);
+    dispatch(amountsTotalCounter());
   };
 
 useEffect(() => {
