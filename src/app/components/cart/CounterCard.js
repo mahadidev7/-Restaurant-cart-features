@@ -35,7 +35,6 @@ function CounterCard({ data, item }) {
     dispatch(goToShop(assets));
     setTypeHelper(!typeHelper);
     dispatch(amountsTotalCounter());
-    setLoading(true)
   };
 
   useEffect(() => {
@@ -45,12 +44,6 @@ function CounterCard({ data, item }) {
       setType("increment");
     }
   }, [typeHelper]);
-
-  useEffect(() => {
-    setTimeout(function(){
-      setLoading(false)
-   }, 3000);
-  }, [loading]);
 
   return (
     <div
@@ -107,13 +100,11 @@ function CounterCard({ data, item }) {
         />
       </div>
       <Button
-        disabled={loading}
-        style={loading ? "bg-white !text-black": "!bg-black"}
-        text={loading ? "wait...": data.shopping ? "remove" : "Add to Shop"}
-        handelClick={() =>{
-          !loading && goToShopHandler({ categoryName: data.name, cartId: item.id, type })
-        }
-        }
+        style="!bg-black"
+        text={data.shopping ? "remove" : "Add to Shop"}
+        handelClick={() => {
+          goToShopHandler({ categoryName: data.name, cartId: item.id, type });
+        }}
       />
     </div>
   );

@@ -23,6 +23,8 @@ function AccountManagement() {
     };
     if (proceedTotalAmount > 0) {
       dispatch(orderHistoryCollect(value));
+    }else{
+      alert("Select product first...!!! ")
     }
   };
 
