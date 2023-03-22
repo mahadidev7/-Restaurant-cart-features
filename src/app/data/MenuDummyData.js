@@ -23,6 +23,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 2,
@@ -43,6 +44,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 3,
@@ -63,6 +65,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 8,
@@ -77,6 +80,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },
@@ -101,6 +105,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 5,
@@ -115,6 +120,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 6,
@@ -129,6 +135,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 7,
@@ -149,6 +156,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },
@@ -168,6 +176,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 8,
@@ -182,6 +191,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 9,
@@ -196,6 +206,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },
@@ -219,6 +230,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 10,
@@ -234,6 +246,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },
@@ -257,6 +270,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 11,
@@ -272,6 +286,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 12,
@@ -287,6 +302,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },
@@ -310,6 +326,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 14,
@@ -325,6 +342,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
         {
           id: 15,
@@ -340,6 +358,7 @@ const MenuDummyData = {
             },
           ],
           categoryShop: 0,
+          amountsTotal: 0,
         },
       ],
     },

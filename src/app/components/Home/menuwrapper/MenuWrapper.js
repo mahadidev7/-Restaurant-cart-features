@@ -11,7 +11,7 @@ function MenuWrapper({ data, style='' }) {
       <MenuTitle text={name} />
       <div className="">
         {items?.map((item, key) => (
-          <MenuItem key={key} {...item} style={style} />
+          <MenuItem key={key} assets={item} style={style} />
         ))}
       </div>
     </div>

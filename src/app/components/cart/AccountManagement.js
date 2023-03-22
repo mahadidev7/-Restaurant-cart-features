@@ -8,39 +8,33 @@ import { Button } from "../share";
 function AccountManagement() {
   const allFoodsOfCartRedux = useSelector(selectCarts);
   const [allActiveShopping, setAllActiveShopping] =
-    useState(allFoodsOfCartRedux);
+    useState([]);
   const [proceedTotalAmount, setProceedTotalAmount] = useState(0);
 
   const proceedHandler = () => {
-    
+
   };
 
+  const proceedTotalAmountFun = (amount=0) => {
+    setProceedTotalAmount(proceedTotalAmount => proceedTotalAmount + amount);
+  }
+
   useEffect(() => {
+    // find shop for ready to shop
     const result = allFoodsOfCartRedux.map(
       (item) => item.categoryShop > 0 && item
     );
     const data = result.filter(Boolean);
     setAllActiveShopping(data);
+
   }, [allFoodsOfCartRedux]);
 
-  useEffect(() => {
-    // for (let i = 0; i < allActiveShopping.length; i++) {
-    //   for (let j = 0; j < allActiveShopping[i].amounts.length; j++) {
-    //     if (allActiveShopping[i].amounts[j].shopping) {
-    //       setProceedTotalAmount(
-    //         (oldAmounts) =>
-    //           oldAmounts + allActiveShopping[i].amounts[j].totalPrice
-    //       );
-    //     }
-    //   }
-    // }
-  }, [allActiveShopping]);
 
   return (
     <div className="lg:col-span-1 col-span-3 shadow-md bg-white py-10 px-2">
       <h3 className="text-center my-2 uppercase text-3xl">Order Summary</h3>
       {allActiveShopping?.map((item, key) => (
-        <AccountItem {...item} key={key} />
+        <AccountItem {...item} key={key} proceedTotalAmountFun={proceedTotalAmountFun} />
       ))}
       <div className="mx-6 mt-10">
         <p className="font-bold text-center"> Total = {proceedTotalAmount}</p>

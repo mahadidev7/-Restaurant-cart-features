@@ -6,25 +6,22 @@ import { useDispatch } from "react-redux";
 import { addFoodToCart } from "../../../redux/slices/cartSlice";
 import { Button } from "../../share";
 
-function MenuItem({
-  id = "",
-  name = "",
-  description = "",
-  img = "",
-  amounts = [],
-  categoryShop,
-  style = "",
-}) {
+function MenuItem({ assets }) {
+  const { id, name, description, img, amounts, categoryShop, style } = assets;
   const dispatch = useDispatch();
 
   const handelCart = (categoryName, price) => {
     const item = {
-      id,
-      name,
-      description,
-      img,
-      amounts: [{name:categoryName, price, quantity: 1, totalPrice:price, shopping: false}],
-      categoryShop,
+      ...assets,
+      amounts: [
+        {
+          name: categoryName,
+          price,
+          quantity: 1,
+          totalPrice: price,
+          shopping: false,
+        },
+      ],
     };
     dispatch(addFoodToCart(item));
     // dispatch(disabledBtnUpdate({name:categoryName, id}));
@@ -73,7 +70,11 @@ const PriceSplit = ({ name = "", price = "", handelCart }) => {
       <p className="bg-secondary py-1 text-white rounded-full font-semibold price mb-2 text-center">
         {price || " "} TK
       </p>
-      <Button disabled={false} handelClick={() => handelCart(name, price)} style="!bg-[#333]" />
+      <Button
+        disabled={false}
+        handelClick={() => handelCart(name, price)}
+        style="!bg-[#333]"
+      />
     </div>
   );
 };

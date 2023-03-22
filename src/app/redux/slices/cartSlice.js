@@ -65,6 +65,7 @@ export const cartSlice = createSlice({
               return data;
             }
           });
+
         } else {
           return item;
         }
@@ -79,7 +80,7 @@ export const cartSlice = createSlice({
             (item) => item.name !== action.payload.categoryName
           );
           item.amounts = result;
-          item.categoryShop = item.categoryShop - 1
+          item.categoryShop = item.categoryShop - 1;
           return true;
         } else {
           return item;
@@ -117,6 +118,12 @@ export const cartSlice = createSlice({
         }
       });
     },
+
+    // amountsTotalCounter: (state, action) => {
+    //   state.foodsOfCart.map((item) => {
+
+    //   });
+    // },
 
     // ...
   },

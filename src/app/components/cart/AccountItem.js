@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function AccountItem({
   id = "",
@@ -6,7 +6,15 @@ function AccountItem({
   description = "",
   img = "",
   amounts = [],
+  proceedTotalAmountFun
 }) {
+
+  useEffect(() => {
+   const result = amounts?.map((item) => item.shopping && item.totalPrice)
+    const df = result.filter(Boolean)
+    console.log(df);
+  }, [amounts]);
+
   return (
     <div className="p-3">
       <div className="">
