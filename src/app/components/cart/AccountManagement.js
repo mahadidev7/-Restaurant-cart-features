@@ -1,7 +1,7 @@
 /* eslint-disable react/style-prop-object */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { orderHistoryCollect, selectCarts } from "../../redux/slices/cartSlice";
+import { deleteSuccessOrderFromCart, orderHistoryCollect, selectCarts } from "../../redux/slices/cartSlice";
 import AccountItem from "./AccountItem";
 import { Button } from "../share";
 import useTimeFormatterHook from "../../hook/useTimeFormatterHook";
@@ -15,17 +15,18 @@ function AccountManagement() {
 
   const proceedHandler = () => {
     customizesTimeFormatter();
-
     let value = {
-      id: new Date(),
+      id: String(new Date()),
       timeFormat: timeData,
       orderData: allActiveShopping,
     };
     if (proceedTotalAmount > 0) {
       dispatch(orderHistoryCollect(value));
+      dispatch(deleteSuccessOrderFromCart());
     }else{
       alert("Select product first...!!! ")
     }
+
   };
 
   useEffect(() => {

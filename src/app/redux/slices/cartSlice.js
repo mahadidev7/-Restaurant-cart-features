@@ -28,15 +28,16 @@ export const cartSlice = createSlice({
         state.foodsOfCartData.map((item) => {
           // find real object of foodsOfCartData state
           if (item.id === action.payload.id) {
-            let res = item.amounts.map(value => value.name === action.payload.amounts[0].name)
-            let result = res.filter(Boolean)
-            if(!result[0]){
+            let res = item.amounts.map(
+              (value) => value.name === action.payload.amounts[0].name
+            );
+            let result = res.filter(Boolean);
+            if (!result[0]) {
               item.amounts = [...item.amounts, ...action.payload.amounts];
-              return true
+              return true;
             }
-            alert("This Product is already Added")
-            return false
-            
+            alert("This Product is already Added");
+            return false;
           } else {
             return item;
           }
@@ -113,10 +114,10 @@ export const cartSlice = createSlice({
               data.shopping = !data.shopping;
             }
           });
-          if (action.payload.type === "increment") {
+          if (action.payload.type === "add") {
             item.categoryShop = item.categoryShop + 1;
           }
-          if (action.payload.type === "decrement") {
+          if (action.payload.type === "remove") {
             if (item.categoryShop === 0) {
               return (item.categoryShop = 0);
             }
@@ -145,11 +146,23 @@ export const cartSlice = createSlice({
     },
 
     orderHistoryCollect: (state, action) => {
-      state.orderHistoryData = [...state.orderHistoryData, action.payload]
+      state.orderHistoryData = [...state.orderHistoryData, action.payload];
     },
 
-    disabledBtnUpdate: (state, action) => {
-      state.orderHistoryData = [...state.orderHistoryData, action.payload]
+    deleteSuccessOrderFromCart: (state) => {
+      state.foodsOfCartData.map((item) => {
+        let allAmounts = (item.amounts = item.amounts.filter(
+          (amountValue) => amountValue.shopping !== true
+        ));
+        allAmounts.map((v) => {
+          return (item.categoryShop = item.categoryShop - 1);
+        });
+        console.log('===allAmounts======');
+        console.log(allAmounts, item.categoryShop);
+        console.log('=======allAmounts=============');
+        
+        // return { ...item };
+      });
     },
 
     // ...
@@ -165,12 +178,13 @@ export const {
   goToShop,
   amountsTotalCounter,
   orderHistoryCollect,
-  disabledBtnUpdate,
+  deleteSuccessOrderFromCart,
 } = cartSlice.actions;
 
 // Selectors - State
 export const selectCarts = (state) => state.foodsOfCart.foodsOfCartData;
 export const selectAllFoodData = (state) => state.foodsOfCart.allFoodData;
-export const selectOrderHistoryData = (state) => state.foodsOfCart.orderHistoryData;
+export const selectOrderHistoryData = (state) =>
+  state.foodsOfCart.orderHistoryData;
 
 export default cartSlice.reducer;

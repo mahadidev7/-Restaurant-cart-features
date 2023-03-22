@@ -14,9 +14,8 @@ import { FaTimes } from "react-icons/fa";
 
 function CounterCard({ data, item }) {
   const dispatch = useDispatch();
-  const [type, setType] = useState("increment");
+  const [type, setType] = useState("add");
   const [typeHelper, setTypeHelper] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   // cart quantity update
   const QuantityUpdateHandler = (assets) => {
@@ -37,13 +36,22 @@ function CounterCard({ data, item }) {
     dispatch(amountsTotalCounter());
   };
 
+  // useEffect(() => {
+  //   if (typeHelper) {
+  //     setType("remove");
+  //   } else {
+  //     setType("add");
+  //   }
+  // }, [typeHelper]);
+
   useEffect(() => {
-    if (typeHelper) {
-      setType("decrement");
-    } else {
-      setType("increment");
+    if (data.shopping) {
+      setType("remove");
+      return;
     }
-  }, [typeHelper]);
+    setType("add");
+    return;
+  }, [data]);
 
   return (
     <div
