@@ -11,7 +11,7 @@ function NotProduct({ ArrayData=[], errorText="Data Not Found!!!", ...rest }) {
             alt="no product"
             className="text-center m-auto"
           />
-          <h3 className="text-center text-2xl">{errorText}</h3>
+          <h3 className="text-center text-2xl text-[#797575]">{errorText}</h3>
         </div>
       )}
     </>

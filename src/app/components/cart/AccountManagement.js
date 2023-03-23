@@ -61,7 +61,7 @@ function AccountManagement() {
   }, [allActiveShopping]);
 
   return (
-    <div className="lg:col-span-1 col-span-3 shadow-md bg-white py-10 px-2">
+    <div className="lg:col-span-1 col-span-full shadow-md bg-white py-10 px-2">
       <h3 className="text-center my-2 uppercase text-3xl">Order Summary</h3>
       {allActiveShopping?.map((item, key) => (
         <AccountItem {...item} key={key} />

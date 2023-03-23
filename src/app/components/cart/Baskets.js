@@ -46,7 +46,7 @@ function Baskets() {
   }, [allFoodsOfCartRedux, dispatch]);
 
   return (
-    <div className="col-span-2 p-3 py-6">
+    <div className="lg:col-span-2 col-span-full p-3 py-6">
       <AppTitle
         firstText="There are have"
         secondText={`${numberOfCart(allFoodsOfCartRedux.length)}`}
