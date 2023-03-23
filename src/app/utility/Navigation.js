@@ -2,14 +2,14 @@
 export const Navigation = [
     {
       url: "/",
-      name: "Home",
+      name: "home",
     },
     {
       url: "/cart",
-      name: "Cart",
+      name: "cart",
     },
     {
       url: "/history",
-      name: "History",
+      name: "history",
     },
   ];

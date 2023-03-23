@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Hero, Menu } from "../components";
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -7,6 +8,7 @@ function HomePage() {
       <Header />
       <Hero />
       <Menu />
+      <Footer />
     </>
   );
 }

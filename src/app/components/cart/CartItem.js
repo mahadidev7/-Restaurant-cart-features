@@ -8,7 +8,6 @@ import CounterCard from "./CounterCard";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
-
   const { id, name, description, amounts, img } = item;
   
   // category Delete from cart and from redux
@@ -17,7 +16,7 @@ function CartItem({ item }) {
   };
 
   return (
-    <div className="bg-white p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3 relative">
+    <div className="bg-white p-4 lg:flex gap-1 items-center justify-between rounded-md mb-3 relative text-left">
       <Button
         text={<FaTimes size={14} className="w-fit" />}
         style="absolute top-3 right-3 !bg-[#dad8d8] hover:!bg-primary !px-1"

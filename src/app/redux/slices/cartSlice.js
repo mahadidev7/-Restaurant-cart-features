@@ -16,26 +16,29 @@ export const cartSlice = createSlice({
     // this addFoodToCart reducers creates a  new Object of the foodsOfCartData state
 
     addFoodToCart: (state, action) => {
+      // Get the current item
       const result = state.foodsOfCartData.find(
         (item) => item.id === action.payload.id
       );
 
       if (!result) {
-        // firstly new data push
+        // New data push
         state.foodsOfCartData = [...state.foodsOfCartData, action.payload];
         return;
       } else {
         state.foodsOfCartData.map((item) => {
-          // find real object of foodsOfCartData state
+          // find real item from foodsOfCartData state
           if (item.id === action.payload.id) {
             let res = item.amounts.map(
               (value) => value.name === action.payload.amounts[0].name
             );
             let result = res.filter(Boolean);
+            // if food category price is not available - then add it
             if (!result[0]) {
               item.amounts = [...item.amounts, ...action.payload.amounts];
               return true;
             }
+            // if food is  available - then warning it
             alert("This Product is already Added");
             return false;
           } else {

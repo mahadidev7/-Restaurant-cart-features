@@ -2,14 +2,14 @@
 import React from "react";
 import { GiChickenOven, GiCow } from "react-icons/gi";
 import { useDispatch } from "react-redux";
-import { addFoodToCart, disabledBtnUpdate } from "../../../redux/slices/cartSlice";
+import {
+  addFoodToCart,
+} from "../../../redux/slices/cartSlice";
 import { Button } from "../../share";
-// import { useSelector } from "react-redux";
-// import { selectAllFoodData } from "../../../redux/slices/cartSlice";
 
-function MenuItem({ assets, layout='flex' }) {
-  const { id, name, description, img, amounts, categoryShop, style } = assets;
-  // const allFoodData = useSelector(selectAllFoodData);
+
+function MenuItem({ assets, layout = "flex" }) {
+  const { name, description, img, amounts, style } = assets;
   const dispatch = useDispatch();
 
   const handelCart = (categoryName, price) => {
@@ -26,10 +26,6 @@ function MenuItem({ assets, layout='flex' }) {
       ],
     };
     dispatch(addFoodToCart(item));
-
-    // dispatch(disabledBtnUpdate({name:data.name, id}));
-
-    // console.log(item)
   };
 
   return (
@@ -40,21 +36,21 @@ function MenuItem({ assets, layout='flex' }) {
         loading="lazy"
         src={img}
         alt="food img"
-        className="lg:w-[80px] lg:h-[80px] w-[200px] h-[200px] object-cover rounded-md mx-auto"
+        className={`${layout ==='flex' ? 'lg:w-1/6 lg:h-[80px]' : 'lg:w-full lg:h-[120px]'} w-[200px] h-[200px] object-cover rounded-md mx-auto`}
       />
 
-      <div className={`p-3 ${layout==='flex' ? 'lg:w-4/5' : 'w-full'}`}>
+      <div className={`p-3 ${layout === "flex" ? "lg:w-3/6" : "w-full"}`}>
         <h3 className="uppercase mb-1">{name}</h3>
         <p className={`text-sm line-clamp-3`}>{description}</p>
       </div>
-      <FoodPriceComponent amounts={amounts} handelCart={handelCart} />
+        <FoodPriceComponent amounts={amounts} handelCart={handelCart} />
     </div>
   );
 }
 
 const FoodPriceComponent = ({ amounts = [], handelCart }) => {
   return (
-    <div className="flex gap-5 justify-around items-center">
+    <div className="flex gap-5 justify-around items-center lg:w-2/6">
       {amounts?.map((item, key) => (
         <PriceSplit {...item} handelCart={handelCart} key={key} />
       ))}
