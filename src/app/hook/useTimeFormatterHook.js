@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function useTimeFormatterHook() {
   const [timeData, setTimeData] = useState(null);
-
+  // Create a Time Format
   const customizesTimeFormatter = () => {
     var today = new Date();
     var DD = String(today.getDate()).padStart(2, "0");

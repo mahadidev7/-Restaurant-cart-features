@@ -3,16 +3,13 @@
 *{
   font-family: 'Raleway', sans-serif !important;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body{
   overflow-x: hidden;
   background-color: #FAF7F2;
 }
-
 h1,h2,h3,h4,h5,h6, .MH_appTitle, .price{
   font-family: 'Bitter', serif !important;
   font-weight: 700;
@@ -20,11 +17,9 @@ h1,h2,h3,h4,h5,h6, .MH_appTitle, .price{
 p{
   color: #333;
 }
-
 .MH_shortTitle{
   font-family: 'Pacifico', cursive !important;
 }
-
 .MH_appLink{
   font-family: 'Bitter', serif !important;
   font-weight: bold;
@@ -36,9 +31,14 @@ p{
   padding: 5px;
   margin: auto;
 }
+table tr th{
+  padding: 7px 5px !important;
+  border-bottom: 1px solid rgb(197, 195, 195);
+}
+table tr, table tr td{
+  text-align: left;
+}
 /* default style end */
-
-
 /* Home page style start */
 .MH_heroSection{
   background-image: url("../src/app/assets/home/heroBG.png");
@@ -47,15 +47,8 @@ p{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-table tr th{
-  padding: 7px 5px !important;
-  border-bottom: 1px solid rgb(197, 195, 195);
-}
-table tr, table tr td{
-  text-align: left;
-}
-
 /* Home page style end */
+
 
 /* 
 font-family: 'Bitter', serif;
