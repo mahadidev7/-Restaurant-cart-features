@@ -23,9 +23,13 @@ function AccountManagement() {
     if (proceedTotalAmount > 0) {
       dispatch(orderHistoryCollect(value));
       dispatch(deleteSuccessOrderFromCart());
+      alert("Successfully proceeded your order, Thanks for your order...")
+      return true
     }else{
       alert("Select product first...!!! ")
+      return false;
     }
+
 
   };
 

@@ -109,13 +109,15 @@ export const cartSlice = createSlice({
       state.foodsOfCartData.map((item) => {
         // find real object of foodsOfCartData state
         if (item.id === action.payload.cartId) {
+          // shopping object key value is toggle for ready to shop item
           item.amounts.map((data) => {
             if (data.name === action.payload.categoryName) {
               data.shopping = !data.shopping;
             }
           });
+          // object key value is the categoryShop is updated is toggle for ready to shop item
           if (action.payload.type === "add") {
-            item.categoryShop = item.categoryShop + 1;
+            return (item.categoryShop = item.categoryShop + 1);
           }
           if (action.payload.type === "remove") {
             if (item.categoryShop === 0) {
@@ -151,17 +153,18 @@ export const cartSlice = createSlice({
 
     deleteSuccessOrderFromCart: (state) => {
       state.foodsOfCartData.map((item) => {
+        // delete all proceed items
         let allAmounts = (item.amounts = item.amounts.filter(
           (amountValue) => amountValue.shopping !== true
         ));
+        // categoryShop is decrements because categoryShop option is connected to the proceed data
         allAmounts.map((v) => {
+          if (item.categoryShop === 0) {
+            return (item.categoryShop = 0);
+          }
           return (item.categoryShop = item.categoryShop - 1);
         });
-        console.log('===allAmounts======');
-        console.log(allAmounts, item.categoryShop);
-        console.log('=======allAmounts=============');
-        
-        // return { ...item };
+        return item;
       });
     },
 
