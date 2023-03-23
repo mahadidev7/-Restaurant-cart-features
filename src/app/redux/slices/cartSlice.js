@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     // this addFoodToCart reducers creates a  new Object of the foodsOfCartData state
-
+    // add to cart 
     addFoodToCart: (state, action) => {
       // Get the current item
       const result = state.foodsOfCartData.find(
@@ -48,7 +48,7 @@ export const cartSlice = createSlice({
         return;
       }
     },
-
+    // food price quantity update
     quantityUpdate: (state, action) => {
       state.foodsOfCartData.map((item) => {
         // find real object of foodsOfCartData state
@@ -84,7 +84,7 @@ export const cartSlice = createSlice({
         }
       });
     },
-
+    // Delete a category like:- cow, chicken,
     cartCategoryDelete: (state, action) => {
       state.foodsOfCartData.map((item) => {
         // find real object of foodsOfCartData state
@@ -100,14 +100,14 @@ export const cartSlice = createSlice({
         }
       });
     },
-
+    // Delete food item
     cartDelete: (state, action) => {
       const result = state.foodsOfCartData.filter(
         (item) => item.id !== action.payload
       );
       state.foodsOfCartData = result;
     },
-
+    // Category food active for shop. like: cow, chicken
     goToShop: (state, action) => {
       state.foodsOfCartData.map((item) => {
         // find real object of foodsOfCartData state
@@ -149,11 +149,11 @@ export const cartSlice = createSlice({
         item.amountsTotal = sum;
       });
     },
-
+    // Successful order 
     orderHistoryCollect: (state, action) => {
       state.orderHistoryData = [...state.orderHistoryData, action.payload];
     },
-
+    // Delete order history for cart
     deleteSuccessOrderFromCart: (state) => {
       state.foodsOfCartData.map((item) => {
         // delete all proceed items
@@ -170,7 +170,25 @@ export const cartSlice = createSlice({
         return item;
       });
     },
-
+    // Select all cart Toggle
+    selectAllCart: (state, action) => {
+      state.foodsOfCartData.map((item) => {
+        item.categoryShop = 0
+        item.amountsTotal = 0
+        item.amounts.map(value => {
+          if(action.payload.type === 'select'){
+            value.shopping = true
+            item.categoryShop = item.categoryShop + 1;
+            item.amountsTotal = item.amountsTotal + value.totalPrice;
+            return
+          }
+          value.shopping = false;
+          return
+        })
+        return item;
+      });
+      return;
+    },
     // ...
   },
 });
@@ -185,6 +203,7 @@ export const {
   amountsTotalCounter,
   orderHistoryCollect,
   deleteSuccessOrderFromCart,
+  selectAllCart,
 } = cartSlice.actions;
 
 // Selectors - State

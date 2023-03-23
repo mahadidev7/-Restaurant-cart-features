@@ -34,7 +34,7 @@ function HistoryPage() {
   return (
     <>
       <Header />
-      <div className="mt-36">
+      <div className="lg:mt-36 mt-10">
         <h4 className="text-center my-5 text-4xl">All Order History List</h4>
         <div className="w-screen h-auto my-6">
           <div className="MH_container">

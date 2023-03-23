@@ -8,7 +8,7 @@ import { selectCarts } from "../../redux/slices/cartSlice";
 function Header() {
   const allFoodsOfCartRedux = useSelector(selectCarts);
   return (
-    <div className="flex bg-[#000] py-2 fixed top-0 left-0 w-screen h-auto z-50">
+    <div className="flex bg-[#000] py-2 lg:fixed top-0 left-0 w-screen h-auto z-50">
       <div className="MH_container">
         <div className="flex justify-between items-center">
           <Link to="/">
