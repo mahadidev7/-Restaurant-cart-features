@@ -1,17 +1,14 @@
 /* eslint-disable react/style-prop-object */
 import React from "react";
-import { GiChickenOven, GiCow } from "react-icons/gi";
 import { useDispatch } from "react-redux";
-import {
-  addFoodToCart,
-} from "../../../redux/slices/cartSlice";
-import { Button } from "../../share";
-
+import {addFoodToCart} from "../../../redux/slices/cartSlice";
+import FoodPriceComponent from "./FoodPriceComponent";
 
 function MenuItem({ assets, layout = "flex" }) {
   const { name, description, img, amounts, style } = assets;
   const dispatch = useDispatch();
 
+  // add to cart
   const handelCart = (categoryName, price) => {
     const item = {
       ...assets,
@@ -48,32 +45,5 @@ function MenuItem({ assets, layout = "flex" }) {
   );
 }
 
-const FoodPriceComponent = ({ amounts = [], handelCart }) => {
-  return (
-    <div className="flex gap-5 justify-around items-center lg:w-2/6">
-      {amounts?.map((item, key) => (
-        <PriceSplit {...item} handelCart={handelCart} key={key} />
-      ))}
-    </div>
-  );
-};
-
-const PriceSplit = ({ name = "", price = "", handelCart }) => {
-  return (
-    <div className="">
-      {name === "chicken" && (
-        <GiChickenOven size={25} className="m-auto mb-1" />
-      )}
-      {name === "cow" && <GiCow size={25} className="m-auto mb-1" />}
-      <p className="text-secondary py-1 rounded-full font-semibold price mb-2 text-center">
-        {price || " "} TK
-      </p>
-      <Button
-        handelClick={() => handelCart(name, price)}
-        style="!bg-secondary"
-      />
-    </div>
-  );
-};
 
 export default MenuItem;

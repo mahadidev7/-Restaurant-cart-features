@@ -6,7 +6,7 @@ import { Navigation } from "../../utility/Navigation";
 import { selectCarts } from "../../redux/slices/cartSlice";
 
 function Header() {
-  const allFoodsOfCartRedux = useSelector(selectCarts);
+  const allFoodsOfCartData = useSelector(selectCarts);
   return (
     <div className="flex bg-[#000] py-2 lg:fixed top-0 left-0 w-screen h-auto z-50">
       <div className="MH_container">
@@ -25,7 +25,7 @@ function Header() {
                 {item.name}
                 {item.name === "cart" && (
                   <small className="absolute -top-2 -right-2 bg-white p-2 rounded-full py-0">
-                    {allFoodsOfCartRedux.length}
+                    {allFoodsOfCartData.length}
                   </small>
                 )}
               </Link>

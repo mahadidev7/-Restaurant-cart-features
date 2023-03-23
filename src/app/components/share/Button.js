@@ -4,7 +4,7 @@ function Button({ text = "Buy", handelClick = () => {}, style='', ...rest }) {
 
   return (
     <button
-      className={`bg-primary active:!opacity-75 px-6 py-1 rounded-full text-white font-bold capitalize ${style}`}
+      className={`bg-black active:!opacity-75 px-6 py-1 rounded-full text-white font-bold capitalize ${style}`}
       onClick={() => handelClick()}
       {...rest}
     >

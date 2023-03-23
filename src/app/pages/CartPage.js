@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "../components";
-import { AccountManagement, Baskets } from "../components/cart";
+import { Baskets } from "../components/cart";
+import OrderWrapper from "../components/cart/order/OrderWrapper";
 import Footer from "../components/Footer";
 
 function CartPage() {
@@ -9,7 +10,7 @@ function CartPage() {
       <Header />
       <div className="grid lg:grid-cols-3 MH_container !my-24">
         <Baskets />
-        <AccountManagement />
+        <OrderWrapper />
       </div>
       <Footer />
     </>

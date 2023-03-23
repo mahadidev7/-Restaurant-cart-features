@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-function AccountItem({
-  id = "",
+function OrderProductItem({
   name = "",
   description = "",
-  img = "",
   amounts = [],
   amountsTotal,
 }) {
@@ -48,4 +46,4 @@ function AccountItem({
   );
 }
 
-export default AccountItem;
+export default OrderProductItem;

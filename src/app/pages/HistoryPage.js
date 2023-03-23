@@ -2,19 +2,19 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Header } from "../components";
-import OrderSummary from "../components/history/OrderSummary";
 import { Button } from "../components/share";
 import { selectOrderHistoryData } from "../redux/slices/cartSlice";
 import { AiFillPrinter } from "react-icons/ai";
 import NotProduct from "../components/share/NotProduct";
+import OrderHistory from "../components/history/OrderHistory";
 
 function HistoryPage() {
-  const OrderHistoryData = useSelector(selectOrderHistoryData);
+  const allHistoryData = useSelector(selectOrderHistoryData);
   const [printPage, setPrintPage] = useState(false);
-  const [orderPagePrint, setOrderPagePrint] = useState(null);
+  const [orderHistoryData, setOrderHistoryData] = useState(null);
 
   const pintButton = (id) => {
-    setOrderPagePrint(OrderHistoryData[id]);
+    setOrderHistoryData(allHistoryData[id]);
     setPrintPage(!printPage);
   };
 
@@ -26,7 +26,7 @@ function HistoryPage() {
           style="!bg-[#333]"
           handelClick={() => pintButton(0)}
         />
-        <OrderSummary orderPagePrint={orderPagePrint} />
+        <OrderHistory historyData={orderHistoryData} />
       </div>
     );
   }
@@ -51,7 +51,7 @@ function HistoryPage() {
                 </tr>
               </thead>
               <tbody>
-                {OrderHistoryData?.map((item, key) => (
+                {allHistoryData?.map((item, key) => (
                   <tr className="border border-[#d0caca]" key={key}>
                     <td>
                       <p className="text-center">{key + 1}</p>
@@ -86,7 +86,7 @@ function HistoryPage() {
                 ))}
               </tbody>
             </table>
-            <NotProduct ArrayData={OrderHistoryData} />
+            <NotProduct ArrayData={allHistoryData} errorText="There are have No Order History" />
           </div>
         </div>
       </div>

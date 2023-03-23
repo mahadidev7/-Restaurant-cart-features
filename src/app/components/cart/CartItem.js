@@ -33,7 +33,7 @@ function CartItem({ item }) {
         <h3 className="uppercase mb-1">{name}</h3>
         <p className={`text-sm line-clamp-3`}>{description}</p>
 
-        {/* Category selection of price  */}
+        {/* Price selection of category */}
         <div className="flex items-center gap-3 flex-wrap">
           {amounts?.map((data, key) => (
             <CounterCard data={data} item={item} key={key} />

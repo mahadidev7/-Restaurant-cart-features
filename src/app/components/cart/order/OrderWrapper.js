@@ -1,18 +1,23 @@
 /* eslint-disable react/style-prop-object */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSuccessOrderFromCart, orderHistoryCollect, selectCarts } from "../../redux/slices/cartSlice";
-import AccountItem from "./AccountItem";
-import { Button } from "../share";
-import useTimeFormatterHook from "../../hook/useTimeFormatterHook";
+import useTimeFormatterHook from "../../../hook/useTimeFormatterHook";
+import {
+  deleteSuccessOrderFromCart,
+  orderHistoryCollect,
+  selectCarts,
+} from "../../../redux/slices/cartSlice";
+import { Button } from "../../share";
+import OrderProductItem from "./OrderProductItem";
 
-function AccountManagement() {
+function OrderWrapper() {
   const dispatch = useDispatch();
   const { timeData, customizesTimeFormatter } = useTimeFormatterHook();
-  const allFoodsOfCartRedux = useSelector(selectCarts);
+  const allFoodsOfCartData = useSelector(selectCarts);
   const [allActiveShopping, setAllActiveShopping] = useState([]);
   const [proceedTotalAmount, setProceedTotalAmount] = useState(0);
 
+  // Order Handler
   const proceedHandler = () => {
     customizesTimeFormatter();
     let value = {
@@ -23,19 +28,17 @@ function AccountManagement() {
     if (proceedTotalAmount > 0) {
       dispatch(orderHistoryCollect(value));
       dispatch(deleteSuccessOrderFromCart());
-      alert("Successfully proceeded your order, Thanks for your order...")
-      return true
-    }else{
-      alert("Select product first...!!! ")
+      alert("Successfully proceeded your order, Thanks for your order...");
+      return true;
+    } else {
+      alert("Select product first...!!! ");
       return false;
     }
-
-
   };
 
   useEffect(() => {
-    // find shop for ready to proceed all data
-    const result = allFoodsOfCartRedux.map(
+    // find these item ready to proceed from all cart data
+    const result = allFoodsOfCartData.map(
       (item) => item.categoryShop > 0 && item
     );
     const purifyCategoryShop = result.filter(Boolean);
@@ -46,17 +49,15 @@ function AccountManagement() {
     });
 
     setAllActiveShopping(purifyAmountsData);
-  }, [allFoodsOfCartRedux]);
+
+    
+  }, [allFoodsOfCartData]);
 
   useEffect(() => {
     // Get proceed Total amount
-    let sunResult = allActiveShopping.reduce(function (
-      accumulator,
-      currentValue
-    ) {
-      return accumulator + currentValue.amountsTotal;
-    },
-    0);
+    let sunResult = allActiveShopping.reduce(function (a, b) {
+      return a + b.amountsTotal;
+    }, 0);
     setProceedTotalAmount(sunResult);
   }, [allActiveShopping]);
 
@@ -64,7 +65,7 @@ function AccountManagement() {
     <div className="lg:col-span-1 col-span-full shadow-md bg-white py-10 px-2">
       <h3 className="text-center my-2 uppercase text-3xl">Order Summary</h3>
       {allActiveShopping?.map((item, key) => (
-        <AccountItem {...item} key={key} />
+        <OrderProductItem {...item} key={key} />
       ))}
       <div className="mx-6 mt-10">
         <h1 className="font-bold text-center md:text-3xl">
@@ -81,4 +82,4 @@ function AccountManagement() {
   );
 }
 
-export default AccountManagement;
+export default OrderWrapper;

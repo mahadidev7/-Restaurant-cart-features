@@ -12,10 +12,11 @@ import NotProduct from "../share/NotProduct";
 import CartItem from "./CartItem";
 
 function Baskets() {
-  const allFoodsOfCartRedux = useSelector(selectCarts);
+  const allFoodsOfCartData = useSelector(selectCarts);
   const dispatch = useDispatch();
   const [type, setType] = useState("select");
 
+  // Get length of all Cart Foods
   const numberOfCart = (no_of_Carts) => {
     switch (no_of_Carts) {
       case 0:
@@ -27,33 +28,33 @@ function Baskets() {
         return `${no_of_Carts} Foods`;
     }
   };
-
+  // Select/Unselect all food for proceed
   const toggleCartHandler = (obj) => {
     dispatch(selectAllCart(obj));
     setType(type === "select" ? "unselect" : "select");
   };
 
   useEffect(() => {
-    !allFoodsOfCartRedux.length && setType("select");
-
-    allFoodsOfCartRedux?.map((item) => {
+    !allFoodsOfCartData.length && setType("select");
+    // If there are have No food category then Delete this item automatically on single cart item
+    allFoodsOfCartData?.map((item) => {
       if (item.amounts.length === 0) {
         dispatch(cartDelete(item.id));
         return true;
       }
       return;
     });
-  }, [allFoodsOfCartRedux, dispatch]);
+  }, [allFoodsOfCartData, dispatch]);
 
   return (
     <div className="lg:col-span-2 col-span-full p-3 py-6">
       <AppTitle
         firstText="There are have"
-        secondText={`${numberOfCart(allFoodsOfCartRedux.length)}`}
+        secondText={`${numberOfCart(allFoodsOfCartData.length)}`}
       />
 
       <div className="mt-14 text-right">
-        {!!allFoodsOfCartRedux.length && (
+        {!!allFoodsOfCartData.length && (
           <Button
             text={`${type} All foods`}
             style="mb-4 !bg-black"
@@ -61,12 +62,12 @@ function Baskets() {
           />
         )}
 
-        {allFoodsOfCartRedux?.map((item, key) => (
+        {allFoodsOfCartData?.map((item, key) => (
           <CartItem item={item} key={key} />
         ))}
       </div>
 
-      <NotProduct ArrayData={allFoodsOfCartRedux} />
+      <NotProduct ArrayData={allFoodsOfCartData} />
     </div>
   );
 }

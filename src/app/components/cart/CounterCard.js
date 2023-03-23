@@ -22,18 +22,17 @@ function CounterCard({ data, item }) {
     dispatch(amountsTotalCounter());
   };
 
-  // cart item Delete from redux
+  // Delete category from cart
   const DeleteCartCategoryHandler = (assets) => {
     dispatch(cartCategoryDelete(assets));
     dispatch(amountsTotalCounter());
   };
 
-  // ready for shop
+  // ready for proceed for buy
   const goToShopHandler = (assets) => {
     dispatch(goToShop(assets));
     dispatch(amountsTotalCounter());
   };
-
 
   useEffect(() => {
     if (data.shopping) {
@@ -53,7 +52,7 @@ function CounterCard({ data, item }) {
     >
       <Button
         text={<FaTimes size={14} />}
-        style="!bg-black hover:!bg-primary !px-1 w-fit absolute top-3 right-3"
+        style="hover:!bg-primary !px-1 w-fit absolute top-3 right-3"
         handelClick={() =>
           DeleteCartCategoryHandler({
             categoryName: data.name,
@@ -78,7 +77,6 @@ function CounterCard({ data, item }) {
       <div className="flex items-center justify-between gap-2 border-t pt-2 border-[#e7e5e5]">
         <Button
           text="-"
-          style="!bg-black"
           handelClick={() =>
             QuantityUpdateHandler({
               type: "decrement",
@@ -89,7 +87,6 @@ function CounterCard({ data, item }) {
         <p className="font-bold">{data.quantity}</p>
         <Button
           text="+"
-          style="!bg-black"
           handelClick={() =>
             QuantityUpdateHandler({
               type: "increment",

@@ -1,10 +1,10 @@
 /* eslint-disable react/style-prop-object */
 import React, { useEffect, useState } from "react";
-import AccountItem from "../cart/AccountItem";
+import { OrderProductItem } from "../cart";
 import { Button } from "../share";
 
-function OrderSummary({ orderPagePrint }) {
-  const summary = orderPagePrint.orderData;
+function OrderHistory({ historyData }) {
+  const summary = historyData.orderData;
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function OrderSummary({ orderPagePrint }) {
       <div className="grid grid-cols-3 w-full">
         <div className="col-span-2 border-r border-[#c8c4c4]">
           {summary?.map((item) => (
-            <AccountItem {...item} />
+            <OrderProductItem {...item} />
           ))}
         </div>
         <div className="">
@@ -40,4 +40,4 @@ function OrderSummary({ orderPagePrint }) {
   );
 }
 
-export default OrderSummary;
+export default OrderHistory;
