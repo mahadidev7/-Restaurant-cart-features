@@ -11,7 +11,7 @@ This project is a fictitious project. Where a burger food company relies on only
     
     
 ### what tools has to use it?
-     Javascript
+     JavaScript
      React
      Redux toolkit
 
