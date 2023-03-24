@@ -8,7 +8,12 @@ This project is a fictitious project. Where a burger food company relies on only
 ### How to get outpot?
     yarn
     yarn start 
-
+    
+    
+### what tools has to use it?
+     Javascript
+     React
+     Redux toolkit
 
 ## Project features:
 
